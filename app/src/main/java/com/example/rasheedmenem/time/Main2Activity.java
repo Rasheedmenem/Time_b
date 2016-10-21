@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class Main2Activity extends AppCompatActivity {
-
+    //The definition of variables
     TextView to                ;
     TextView TitleMision       ;
     TextView TimeMisionchoose  ;
@@ -30,25 +30,34 @@ public class Main2Activity extends AppCompatActivity {
     Calendar c = Calendar.getInstance() ;
     int hour   = c.get(Calendar.HOUR)   ;
     int Minute = c.get(Calendar.HOUR)   ;
-    int t = 0 ;
-    int t1 = 0;
+    int h = 0 ;
+    int h1 = 0;
     int r = 0 ;
     int m = 0 ;
     int m1 = 0 ;
     int mr = 0 ;
     MainActivity main ;
+    //==============================================================================================
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        //findview by id
         TitleMision      = (TextView) findViewById(R.id.TitleMision)      ;
-        TimeMisionchoose = (TextView) findViewById(R.id.MisionTimeChoose) ;
-        TimeMision       = (TextView) findViewById(R.id.TimeMision)       ;
-        onClock          = (Switch)   findViewById(R.id.switchClock)      ;
-        finishbtn        = (Button)   findViewById(R.id.Finishbtn)        ;
-        to               = (TextView) findViewById(R.id.to)               ;
 
+        TimeMisionchoose = (TextView) findViewById(R.id.MisionTimeChoose) ;
+
+        TimeMision       = (TextView) findViewById(R.id.TimeMision)       ;
+
+        onClock          = (Switch)   findViewById(R.id.switchClock)      ;
+
+        finishbtn        = (Button)   findViewById(R.id.Finishbtn)        ;
+
+        to               = (TextView) findViewById(R.id.to)               ;
+        //==============================================================================================
+
+        // to make a time in main2
         TimeMisionchoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +67,7 @@ public class Main2Activity extends AppCompatActivity {
                     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
 
                         TimeMisionchoose.setText("Mision time :  From : " + hour + ":" + minute);
-                        t = hour ;
+                        h = hour ;
                         m = minute ;
 
                     }
@@ -76,9 +85,9 @@ public class Main2Activity extends AppCompatActivity {
                             @Override
                             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                                 to.setText("to : " + hour + ":" + minute);
-                                t1 = hour ;
+                                h1 = hour ;
                                 m1= minute ;
-                                r = t1 - t ;
+                                r = h1 - h ;
                                 mr = m1 - m ;
                                 long x = r *3600000 + mr * 60000;
                                 TimeMision.setText("to : " + String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(x),
@@ -90,22 +99,29 @@ public class Main2Activity extends AppCompatActivity {
                         time.show();
                     }
                 });
+        //to set what users saved
         finishbtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this , MainActivity.class);
-               // Bundle B = new Bundle();
-               // B.putString("Title Mission" , "" + TitleMision.getText());
+
                  voidcall.name = "" + TitleMision.getText();
+
                  voidcall.Time_call = r ;
+
                 //r is the hour
                  voidcall.min_call = mr ;
+
                 // is the minute
+
                 startActivity(intent);
 
             }
         });
+        //==============================================================================================
+
+        //==============================================================================================
     }
 
 }
