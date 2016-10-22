@@ -106,15 +106,18 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this , MainActivity.class);
 
-                 voidcall.name = "" + TitleMision.getText();
 
-                 voidcall.Time_call = r ;
+                           voidcall.name = "" + TitleMision.getText();
 
-                //r is the hour
-                 voidcall.min_call = mr ;
+                           voidcall.Time_call = r;
 
-                // is the minute
+                           voidcall.min_call = mr;
 
+                        voidcall.missionwhere ++;
+
+
+
+                    voidcall.missionwhere++ ;
                 startActivity(intent);
 
             }

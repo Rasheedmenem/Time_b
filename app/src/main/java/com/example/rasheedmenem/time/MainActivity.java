@@ -22,11 +22,11 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
 
     //The definition of variables
-    public int progressmax = 0                         ;
+    public int progressmax  = 0                        ;
 
-    public TextView timer                              ;
+    public TextView timer , nextmission , nextduration ;
 
-    public Button done                                 ;
+    public Button start                                ;
 
     public timer t                                     ;
 
@@ -51,29 +51,36 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         timer = (TextView) findViewById(R.id.timertext);
+        nextmission = (TextView)findViewById(R.id.nextonemission);
+        nextduration = (TextView)findViewById(R.id.nextduration);
         titlemision1 = (TextView)findViewById(R.id.titlemisiontext) ;
 
         //==============================================================================================
 
+          titlemision1.setText(voidcall.name);
 
-        titlemision1.setText(voidcall.name);
 
-        //to set time this like --> 00:00:00
 
-           long x = (voidcall.Time_call * 3600000) + (voidcall.min_call * 60000) ;
-           timer.setText(String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(x),
-                TimeUnit.MILLISECONDS.toMinutes(x) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(x)),
-                TimeUnit.MILLISECONDS.toSeconds(x) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(x))));
+             //to set time this like --> 00:00:00
+
+            long x = (voidcall.Time_call * 3600000) + (voidcall.min_call * 60000) ;
+            timer.setText(String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(x),
+                    TimeUnit.MILLISECONDS.toMinutes(x) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(x)),
+                    TimeUnit.MILLISECONDS.toSeconds(x) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(x))));
+
+
+
 
         //==============================================================================================
 
 
 
         // start timerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-        done = (Button) findViewById(R.id.start);
-        done.setOnClickListener(new View.OnClickListener() {
+        start = (Button) findViewById(R.id.start);
+        start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 // progress bar
                   int minprog     = voidcall.min_call      ;
                   int hourprog    = voidcall.Time_call     ;
@@ -168,7 +175,9 @@ public class MainActivity extends AppCompatActivity {
     }
 //==============================================================================================
 
+          public void runagain(){
 
+          }
 
 
 // menuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
