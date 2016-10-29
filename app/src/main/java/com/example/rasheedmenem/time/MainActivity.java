@@ -2,11 +2,17 @@ package com.example.rasheedmenem.time;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -24,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     //The definition of variables
     public int progressmax  = 0                        ;
 
+    NotificationManager manager                        ;
+
     public TextView timer , nextmission , nextduration ;
 
     public Button start                                ;
@@ -35,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private int mProgressStatus = 0                    ;
 
     public static TextView titlemision1 = null         ;
+
+    static int id  = 1 ;
 
     //==============================================================================================
 
@@ -55,9 +65,14 @@ public class MainActivity extends AppCompatActivity {
         nextduration = (TextView)findViewById(R.id.nextduration);
         titlemision1 = (TextView)findViewById(R.id.titlemisiontext) ;
 
+        manager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         //==============================================================================================
 
-          titlemision1.setText(voidcall.name);
+
+
+        titlemision1.setText(voidcall.name);
+
+
 
 
 
@@ -77,11 +92,13 @@ public class MainActivity extends AppCompatActivity {
 
         // start timerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
         start = (Button) findViewById(R.id.start);
-        start.setOnClickListener(new View.OnClickListener() {
+        start.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                start.setEnabled(false);
                 // progress bar
+
                   int minprog     = voidcall.min_call      ;
                   int hourprog    = voidcall.Time_call     ;
                   int rminprog    = minprog * 60           ;
@@ -169,15 +186,47 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onFinish() {
 
+            start.setEnabled(true);
+            progressBar.setProgress(0);
+            NotificationCompat.Builder  nb = (NotificationCompat.Builder) new NotificationCompat.Builder(MainActivity.this)
+                    .setContentTitle("Finish")
+                    .setContentText(titlemision1.getText()+" has been finished")
+                    .setSmallIcon(R.drawable.androidicon);
+
+            Intent resultIntent = new Intent(MainActivity.this  , MainActivity.class );
+
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(MainActivity.this);
+
+            stackBuilder.addParentStack(MainActivity.class) ;
+            stackBuilder.addNextIntent(resultIntent);
+            PendingIntent pendingIntent = stackBuilder.getPendingIntent(20 , PendingIntent.FLAG_UPDATE_CURRENT);
+            nb.setContentIntent(pendingIntent);
+
+            nb.addAction(R.drawable.androidicon ,"show ", pendingIntent);
+
+            manager.notify(id , nb.build());
+
+            id++;
+            long x = 0 ;
+
+            // put x in timer
+            timer.setText(String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(x),
+                    TimeUnit.MILLISECONDS.toMinutes(x) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(x)),
+                    TimeUnit.MILLISECONDS.toSeconds(x) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(x))));
+
+           if(Main2Activity.onClock.isEnabled()){
+
+               final MediaPlayer never = MediaPlayer.create(MainActivity.this, R.raw.n);
+               never.start();
+           }
+
         }
 
 
     }
 //==============================================================================================
 
-          public void runagain(){
 
-          }
 
 
 // menuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu

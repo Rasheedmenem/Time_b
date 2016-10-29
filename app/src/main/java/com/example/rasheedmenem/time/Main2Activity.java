@@ -23,7 +23,7 @@ public class Main2Activity extends AppCompatActivity {
     TextView TitleMision       ;
     TextView TimeMisionchoose  ;
     TextView TimeMision        ;
-    Switch onClock             ;
+    static Switch onClock      ;
     Button finishbtn           ;
 
 
@@ -55,6 +55,8 @@ public class Main2Activity extends AppCompatActivity {
         finishbtn        = (Button)   findViewById(R.id.Finishbtn)        ;
 
         to               = (TextView) findViewById(R.id.to)               ;
+
+        boolean b = onClock.isEnabled();
         //==============================================================================================
 
         // to make a time in main2
@@ -104,20 +106,17 @@ public class Main2Activity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Main2Activity.this , MainActivity.class);
+                Intent intent = new Intent(Main2Activity.this, MainActivity.class);
 
 
-                           voidcall.name = "" + TitleMision.getText();
+                    voidcall.name = "" + TitleMision.getText();
 
-                           voidcall.Time_call = r;
+                    voidcall.Time_call = r;
 
-                           voidcall.min_call = mr;
-
-                        voidcall.missionwhere ++;
+                    voidcall.min_call = mr;
 
 
 
-                    voidcall.missionwhere++ ;
                 startActivity(intent);
 
             }

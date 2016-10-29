@@ -65,7 +65,7 @@
                 android:layout_marginTop="58dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="Studying" />
+                android:text="Default" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -114,12 +114,36 @@
             android:layout_alignParentStart="true">
 
             <TextView
-                android:text="Duration : "
+                android:text="Next Mission : "
+                android:layout_height="wrap_content"
+                android:id="@+id/Text"
+
+                android:layout_alignBaseline="@+id/nextonemission"
+                android:layout_alignBottom="@+id/nextonemission"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/nextduration"
+                android:layout_width="100dp"
+                android:layout_alignEnd="@+id/textView2" />
+
+            <TextView
+                android:text="............."
                 android:textSize="18dp"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/nextonemission"
+                android:layout_marginTop="57dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView2"
+                android:layout_marginStart="43dp" />
+
+            <TextView
+                android:text="Duration : "
+                android:textSize="14dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/textView2"
-                android:layout_below="@+id/Text"
+                android:layout_width="100dp"
+                android:layout_below="@+id/nextonemission"
                 android:layout_alignParentStart="true" />
 
             <TextView
@@ -130,29 +154,7 @@
                 android:id="@+id/nextduration"
                 android:layout_alignBaseline="@+id/textView2"
                 android:layout_alignBottom="@+id/textView2"
-                android:layout_alignStart="@+id/nextonemission" />
-
-            <TextView
-                android:text="............."
-                android:textSize="18dp"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/nextonemission"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="55dp" />
-
-            <TextView
-                android:text="Next Mission : "
-                android:textSize="18dp"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/Text"
-
-                android:layout_alignBaseline="@+id/nextonemission"
-                android:layout_alignBottom="@+id/nextonemission"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/nextduration" />
+                android:layout_toEndOf="@+id/textView2" />
         </RelativeLayout>
 
     </RelativeLayout>
