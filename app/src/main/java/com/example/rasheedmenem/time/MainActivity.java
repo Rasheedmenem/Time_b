@@ -72,25 +72,17 @@ public class MainActivity extends AppCompatActivity {
 
         titlemision1.setText(voidcall.name);
 
-
-
-
-
              //to set time this like --> 00:00:00
 
-            long x = (voidcall.Time_call * 3600000) + (voidcall.min_call * 60000) ;
+        long x = (voidcall.Time_call * 3600000) + (voidcall.min_call * 60000) ;
             timer.setText(String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(x),
                     TimeUnit.MILLISECONDS.toMinutes(x) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(x)),
                     TimeUnit.MILLISECONDS.toSeconds(x) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(x))));
 
-
-
-
         //==============================================================================================
 
-
-
         // start timerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+
         start = (Button) findViewById(R.id.start);
         start.setOnClickListener( new View.OnClickListener() {
             @Override
