@@ -65,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
         nextduration = (TextView)findViewById(R.id.nextduration);
         titlemision1 = (TextView)findViewById(R.id.titlemisiontext) ;
         Button less = (Button)  findViewById(R.id.button2);
+        Button add = (Button)  findViewById(R.id.button);
+
         manager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         //==============================================================================================
 
 
@@ -131,6 +134,25 @@ public class MainActivity extends AppCompatActivity {
                 t = new timer(x , 1000);
                 t.start();
 
+
+
+
+
+
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                t.cancel();
+                long x = (voidcall.Time_call * 3600000) + (voidcall.min_call * 60000) + 60000;
+
+                // put x in timer
+                timer.setText(String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(x),
+                        TimeUnit.MILLISECONDS.toMinutes(x) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(x)),
+                        TimeUnit.MILLISECONDS.toSeconds(x) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(x))));
+                t = new timer(x , 1000);
+                t.start();
 
 
 
