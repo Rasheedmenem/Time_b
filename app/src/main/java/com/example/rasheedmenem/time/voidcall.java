@@ -10,5 +10,5 @@ public class voidcall {
 
     public static int missionwhere = 0    ;
 
-    boolean halosheloveibrahim = false   ;//ofcurse
+    int khara = 0 ;
 }
