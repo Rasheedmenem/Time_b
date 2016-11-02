@@ -9,4 +9,6 @@ public class voidcall {
     public static int min_call            ;
 
     public static int missionwhere = 0    ;
+
+    boolean halosheloveibrahim = false      ;
 }
