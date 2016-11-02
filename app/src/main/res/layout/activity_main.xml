@@ -157,6 +157,7 @@
                 android:layout_alignBaseline="@+id/textView2"
                 android:layout_alignBottom="@+id/textView2"
                 android:layout_toEndOf="@+id/textView2" />
+
         </RelativeLayout>
 
     </RelativeLayout>
