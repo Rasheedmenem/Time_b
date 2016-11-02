@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
                 start.setEnabled(false);
 
-                // progress bar
+                //  progress bar
 
                   int minprog     = voidcall.min_call      ;
                   int hourprog    = voidcall.Time_call     ;
